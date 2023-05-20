@@ -8,7 +8,6 @@ export const register = async (user: UserParams) => {
     url: '/api/register',
     method: 'POST',
     body: user,
-    json: false,
   });
 };
 
@@ -17,6 +16,5 @@ export const signin = async (user: UserParams) => {
     url: '/api/signin',
     method: 'POST',
     body: user,
-    json: false,
   });
 };

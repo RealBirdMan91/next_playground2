@@ -23,14 +23,13 @@ const buttonClasses = cva(
 
         secondary: [
           'bg-white',
-          'text-black',
-          'border-gray-400',
+          'text-slate-600',
+          'border-slate-400',
           'hover:bg-gray-100',
           'border-solid',
           'border-2',
-          'border-gray-800',
         ],
-        text: ['bg-transparent', 'text-black', 'hover:bg-gray-100'],
+        text: ['bg-transparent', 'text-slate-700', 'hover:bg-gray-100'],
       },
       size: {
         small: ['text-md', 'py-1', 'px-2'],
