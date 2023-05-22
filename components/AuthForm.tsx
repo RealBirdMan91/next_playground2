@@ -1,5 +1,5 @@
 'use client';
-import { register, signin } from '@/api/auth';
+import { signup, signin } from '@/api/auth';
 import { FormEvent, useCallback, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -41,12 +41,12 @@ export default function AuthForm({ mode }: Props) {
 
       try {
         if (mode === 'signup') {
-          await register(formState);
+          await signup(formState);
         } else {
           await signin(formState);
         }
 
-        router.replace('/home');
+        router.replace('/');
       } catch (e) {
         setError(`Could not ${mode}`);
       } finally {

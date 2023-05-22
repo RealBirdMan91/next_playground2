@@ -7,17 +7,17 @@ export const metadata = {
 };
 
 interface RootLayoutProps {
-  signin: React.ReactNode;
-  home: React.ReactNode;
+  auth: React.ReactNode;
+  dashboard: React.ReactNode;
 }
 
-export default function RootLayout({ signin, home }: RootLayoutProps) {
+export default function RootLayout({ auth, dashboard }: RootLayoutProps) {
   const isLoggedIn = false;
   return (
     <html lang="en">
       <body className="h-screen w-screen rainbow-mesh p-6">
         <GlassPane className="w-full h-full flex items-center justify-center">
-          {isLoggedIn ? home : signin}
+          {isLoggedIn ? dashboard : auth}
         </GlassPane>
       </body>
     </html>

@@ -3,9 +3,9 @@ import { User } from '@prisma/client';
 
 type UserParams = Omit<User, 'id' | 'createdAt' | 'updatedAt'>;
 
-export const register = async (user: UserParams) => {
+export const signup = async (user: UserParams) => {
   return fetcher({
-    url: '/api/register',
+    url: '/api/signup',
     method: 'POST',
     body: user,
   });
