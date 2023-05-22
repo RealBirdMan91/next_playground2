@@ -1,4 +1,7 @@
 import GlassPane from '@/components/GlassPane';
+import { cookies } from 'next/headers';
+import { validateJWT } from '@/utils/auth';
+
 import '@/styles/globals.css';
 
 export const metadata = {
@@ -11,13 +14,24 @@ interface RootLayoutProps {
   dashboard: React.ReactNode;
 }
 
-export default function RootLayout({ auth, dashboard }: RootLayoutProps) {
-  const isLoggedIn = false;
+export default async function RootLayout({ auth, dashboard }: RootLayoutProps) {
+  const cookieStore = cookies();
+  const jwt = cookieStore.get('jwt');
+  let isValid = false;
+
+  try {
+    const payload = await validateJWT(jwt!.value);
+    //console.log(payload);
+    isValid = true;
+  } catch (err) {
+    isValid = false;
+  }
+  console.log(isValid);
   return (
     <html lang="en">
       <body className="h-screen w-screen rainbow-mesh p-6">
         <GlassPane className="w-full h-full flex items-center justify-center">
-          {isLoggedIn ? dashboard : auth}
+          {isValid ? dashboard : auth}
         </GlassPane>
       </body>
     </html>

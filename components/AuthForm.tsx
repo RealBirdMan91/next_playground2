@@ -8,7 +8,7 @@ import Button from './Button';
 import Input from './Input';
 
 const registerContent = {
-  linkUrl: '/signin',
+  linkUrl: '/',
   linkText: 'Already have an account?',
   header: 'Create a new Account',
   subheader: 'Just a few things to get started',
@@ -45,12 +45,11 @@ export default function AuthForm({ mode }: Props) {
         } else {
           await signin(formState);
         }
-
-        router.replace('/');
       } catch (e) {
         setError(`Could not ${mode}`);
       } finally {
         setFormState({ ...initial });
+        router.refresh();
       }
     },
     [

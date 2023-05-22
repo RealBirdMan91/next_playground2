@@ -34,10 +34,7 @@ export async function POST(request: IRequest) {
 
   const jwt = await createJWT(existingUser);
 
-  const response = NextResponse.json({
-    user: existingUser.id,
-    message: 'User signed in',
-  });
+  const response = NextResponse.redirect(new URL('/', request.url));
 
   response.cookies.set({
     name: 'jwt',
